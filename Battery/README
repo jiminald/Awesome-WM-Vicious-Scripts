@@ -1,0 +1,34 @@
+Battery - Awesome WM Vicious Script
+Written By Jiminald <code@jiminald.co.uk>
+
+
+Description
+===========================================================================
+
+This script is based from the stock script supplied with Vicious. The
+script has just been modified to return the data found in an array so
+data can be sorted in your rc.lua if you wish to color it
+
+
+Sample rc.lua script
+===========================================================================
+
+batwi = widget({ type = "textbox" })
+vicious.register( batwi, vicious.widgets.bat,
+	function (widget, args)
+		if args["{state}"] == "Full\n" then
+			return "Battery: 100% ↯"
+		elseif args["{state}"] == "Charged\n" then
+			return "Battery: Charged 100% ↯"
+		elseif args["{state}"] == "Charging\n" then
+			return "Battery: Charging " .. args["{percent}"] .. "% +"
+		else
+			return "Battery: " .. args["{percent}"] .. "% -"
+		end
+	end, 61, "BAT0")
+
+
+Changelog
+===========================================================================
+
+v1.0	Initial Release			27/Dec/2010

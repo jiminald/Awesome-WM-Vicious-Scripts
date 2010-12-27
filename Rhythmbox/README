@@ -1,0 +1,37 @@
+Rhythmbox - Awesome WM Vicious Script
+Written By Jiminald <code@jiminald.co.uk>
+
+Description
+===========================================================================
+
+This script will show what song is playing in Rhythmbox using
+rhythmbox-client
+
+
+Sample rc.lua script
+===========================================================================
+
+rhywi = widget({ type = "textbox" })
+vicious.register( rhywi, vicious.widgets.rhythmbox,
+	function (widget, args)
+	   if args["{state}"] == nil then
+		  return "Now Playing: Not loaded"
+	   elseif args["{state}"] == "Not playing" then
+		  return "Now Playing: Paused"
+	   else
+		  return "Now Playing: " .. args["{state}"]
+	   end
+	end, 4)
+
+
+Changelog
+===========================================================================
+
+v1.0	Initial Release			27/Dec/2010
+
+
+Todo
+===========================================================================
+
+* Enhance the script to send custom command line arguments
+to rhythmbox-client
